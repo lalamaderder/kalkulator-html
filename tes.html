@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Sederhana</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f4f4f4;
+        font-family: Arial, sans-serif;
+      }
+      .calculator {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+      .display {
+        width: 96%;
+        height: 60px;
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: right;
+        padding: 10px;
+        border: none;
+        background: #f1f1f1;
+        border-radius: 8px;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .buttons button {
+        padding: 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        background: #e0e0e0;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .buttons button:hover {
+        background: #d4d4d4;
+      }
+      .buttons .operator {
+        background: #ff9f43;
+        color: #fff;
+      }
+      .buttons .operator:hover {
+        background: #ff8f20;
+      }
+      .buttons .equal {
+        background: #28a745;
+        color: white;
+      }
+      .buttons .equal:hover {
+        background: #218838;
+      }
+      .buttons .clear {
+        background: #dc3545;
+        color: white;
+      }
+      .buttons .clear:hover {
+        background: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="tampilangka" class="display" disabled>
+      <div class="buttons">
+        <button onclick="hapusdata()" class="clear">C</button>
+        <button>(</button>
+        <button>)</button>
+        <button onclick="angka('/')" class="operator">÷</button>
+
+        <button onclick="angka(7)">7</button>
+        <button onclick="angka(8)">8</button>
+        <button onclick="angka(9)">9</button>
+        <button onclick="angka('*')" class="operator">×</button>
+
+        <button onclick="angka(4)">4</button>
+        <button onclick="angka(5)">5</button>
+        <button onclick="angka(6)">6</button>
+        <button onclick="angka('-')" class="operator">−</button>
+
+        <button onclick="angka(1)">1</button>
+        <button onclick="angka(2)">2</button>
+        <button onclick="angka(3)">3</button>
+        <button onclick="angka('+')" class="operator">+</button>
+
+        <button onclick="angka(0)">0</button>
+        <button onclick="angka('.')">.</button>
+        <button onclick="hasil()" class="equal">=</button>
+        <button onclick="hapusdata()" class="equal">c</button>
+      </div>
+    </div>
+
+    <script>
+      let display = document.getElementById("tampilangka");
+
+      function angka(nilai) {
+        display.value += nilai;
+      }
+
+      function hapusdata() {
+        display.value = "";
+      }
+
+      function hasil() {
+        try {
+          display.value = eval(display.value);
+        } catch (error) {
+          alert("Input tidak valid!");
+          hapusdata();
+        }
+      }
+    </script>
+  </body>
+</html>
